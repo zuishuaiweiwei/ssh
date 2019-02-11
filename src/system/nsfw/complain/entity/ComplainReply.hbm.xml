@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="system.nsfw.complain.entity.ComplainReply" table="ssh_0607_reply" schema="ssh2">
+        <id name="replyId" column="reply_id">
+            <generator class="uuid.hex"></generator>
+        </id>
+
+        <property name="replyName" column="reply_name"/>
+        <property name="replyDept" column="reply_dept"/>
+        <property name="replyTime" column="reply_time"/>
+        <property name="replyContent" column="retply_content"/>
+        <many-to-one name="complain" class="system.nsfw.complain.entity.Complain">
+            <column name="comp_id"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

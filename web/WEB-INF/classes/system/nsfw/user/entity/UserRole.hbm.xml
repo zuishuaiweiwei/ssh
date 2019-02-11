@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="system.nsfw.user.entity">
+	
+	<class name="UserRole"  table="ssh_0607_user_role">
+	<composite-id name="id" class="system.nsfw.user.entity.UserRoleId">
+		<key-many-to-one name="role" lazy="false" class="system.nsfw.role.entity.Role">
+			<column name="roleId"></column>
+		</key-many-to-one>
+		<key-property name="user" type="java.lang.String" >
+			<column name="userId"></column>
+		</key-property>
+	</composite-id>
+	</class>
+</hibernate-mapping>

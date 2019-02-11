@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+    <package name="user" namespace="/nsfw" extends="base-default">
+        <action name="user_*" method="{1}" class="system.nsfw.user.action.UserAction">
+            <result name="listUi">/WEB-INF/jsp/nsfw/user/listUI.jsp</result>
+            <result name="list" type="redirectAction">
+                <param name="actionName">user_listUi</param>
+                <param name="user.Name">${strName}</param>
+                <param name="encode">true</param>
+            </result>
+            <result name="addUi">/WEB-INF/jsp/nsfw/user/addUI.jsp</result>
+            <result name="updateUi">/WEB-INF/jsp/nsfw/user/editUI.jsp</result>
+        </action>
+    </package>
+</struts>

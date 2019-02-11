@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+          "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+	<package name="nswfHome" namespace="/nsfw" extends="base-default">
+		<action name="home_*" method="{1}" class="system.nsfw.home.action.HomeAction">
+			<result name="{1}" >/WEB-INF/jsp/nsfw/{1}.jsp</result>
+		</action>
+	</package>
+</struts>

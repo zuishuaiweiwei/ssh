@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+    <package name="login" namespace="/sys" extends="base-default">
+        <action name="login_*" method="{1}" class="system.login.action.LoginAction">
+            <result name="loginUi">/WEB-INF/jsp/loginUI.jsp</result>
+            <result name="success" type="redirectAction">
+                <param name="actionName">home.action</param>
+            </result>
+            <result name="error" type="redirectAction">
+                <param name="actionName">login_loginUi.action</param>
+            </result>
+        </action>
+    </package>
+</struts>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    	 http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    <bean id="complainDao" class="system.nsfw.complain.dao.impl.ComplainDaoImpl" parent="baseDao">
+    </bean>
+    <!--开启注解扫描-->
+    <context:component-scan base-package="system.nsfw.complain.service.impl"></context:component-scan>
+
+    <bean id="complainJobdetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="complainService"></property>
+        <property name="targetMethod" value="autoDeal"></property>
+        <property name="concurrent" value="false"></property>
+    </bean>
+    <bean id="complainCronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail" ref="complainJobdetail"></property>
+        <!-- 秒 分 时 日 月 周 年（可选）
+        /   0/3 0秒开始 每三秒执行一次
+        -   0-3 0秒到3秒执行
+        *   任意
+        l   每月的最后一天
+        -->
+        <property name="cronExpression" value="0 * 15 10 8 ?"></property>
+    </bean>
+    <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                <ref bean="complainCronTrigger"></ref>
+            </list>
+        </property>
+    </bean>
+</beans>

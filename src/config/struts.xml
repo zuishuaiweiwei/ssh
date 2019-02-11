@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <!--禁用动态调用方法-->
+    <constant name="struts.enable.DynamicMethodInvocation" value="false"></constant>
+    <!--开发模式-->
+    <constant name="struts.devMode" value="true"></constant>
+    <!--后缀必须为action-->
+    <constant name="struts.action.extention" value="action"/>
+    <!--主题为simple-->
+    <constant name="struts.ui.theme" value="simple"/>
+
+    <package name="base-default" extends="struts-default">
+        <result-types>
+            <!--type 好像是可以返回结果的时候会到这个类里面进行一些操作 不知道是不是只限于异常的处理-->
+            <result-type name="error" class="system.core.action.SysResultSuport"></result-type>
+        </result-types>
+        <global-results>
+            <!--全局结果集-->
+            <result name="error" type="error">/index.jsp</result>
+            <result name="sysError">/index.jsp</result>
+            <result name="input">/index.jsp</result>
+        </global-results>
+        <global-exception-mappings>
+            <!--全局异常映射 -->
+            <exception-mapping exception="system.exception.SysException" result="sysError"></exception-mapping>
+            <exception-mapping exception="java.lang.Exception" result="input"></exception-mapping>
+        </global-exception-mappings>
+    </package>
+    <!-- 用户的配置文件-->
+    <include file="system/nsfw/user/config/user_struts.xml"></include>
+    <!-- 角色的配置文件-->
+    <include file="system/nsfw/role/config/role_struts.xml"></include>
+    <!-- 系统首页的配置文件-->
+    <include file="system/home/config/home_struts.xml"></include>
+    <!-- 纳税服务首页的配置文件-->
+    <include file="system/nsfw/home/config/home_struts.xml"></include>
+    <!-- 登陆的配置文件-->
+    <include file="system/login/config/login_struts.xml"></include>
+    <!-- 信息发布的配置文件-->
+    <include file="system/nsfw/info/config/info_struts.xml"></include>
+    <!-- 投诉信息的配置文件-->
+    <include file="system/nsfw/complain/config/complain_struts.xml"></include>
+</struts>

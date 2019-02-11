@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="system.nsfw.role.entity">
+	
+	<class name="Role"  table="ssh_0607_role">
+		<id name="roleId" type="java.lang.String">
+			<column name="role_id" length="100" >
+			</column>
+			<generator class="uuid.hex"/>
+		</id>
+		<property name="name" type="java.lang.String" ></property>
+		<property name="state" length="1" ></property>
+		<set name="privilege" inverse="true" lazy="false" cascade="all">
+			<key column="role_id"></key>
+			<one-to-many class="system.nsfw.role.entity.RolePrivilege"></one-to-many>
+		</set>
+
+	</class>
+</hibernate-mapping>

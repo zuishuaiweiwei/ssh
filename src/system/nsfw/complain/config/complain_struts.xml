@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+    <package name="complain" namespace="/nsfw" extends="json-default">
+        <action name="complain_*" method="{1}" class="system.nsfw.complain.action.ComplainAction">
+            <result name="listUi">/WEB-INF/jsp/nsfw/complain/listUI.jsp</result>
+            <result name="addUi">/WEB-INF/jsp/nsfw/complain/addUI.jsp</result>
+            <result name="dealUi">/WEB-INF/jsp/nsfw/complain/dealUI.jsp</result>
+            <result name="annualStatisticChartUi">/WEB-INF/jsp/nsfw/complain/annualStatisticChartUI.jsp</result>
+            <result name="annualStatisticChartData" type="json">
+                <param name="root">chartsMap</param>
+            </result>
+            <result name="list" type="redirectAction">
+                <param name="actionName">complain_listUi</param>
+                <param name="complain.compTitle">${strTitle}</param>
+                <param name="pageNum">${pageNum}</param>
+                <param name="endTime">${endTime}</param>
+                <param name="startTime">${startTime}</param>
+                <!--重定向 get方式 参数需要转码-->
+                <param name="encode">true</param>
+            </result>
+        </action>
+    </package>
+</struts>

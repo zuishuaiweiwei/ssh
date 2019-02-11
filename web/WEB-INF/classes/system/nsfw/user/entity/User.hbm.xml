@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="system.nsfw.user.entity">
+	
+	<class name="User"  table="ssh_0607_user">
+		<id name="id" type="java.lang.String">
+			<column name="id" length="36" >
+			</column>
+			<generator class="uuid2"/>
+		</id>
+
+		<property name="dept" type="java.lang.String">
+			<column name="dept" length="16">
+			</column>
+		</property>
+
+		<property name="name"  type="java.lang.String" >
+			<column name="name">
+			</column>
+		</property>
+
+		<property name="account" type="java.lang.String">
+			<column name="account" length="10">
+			</column>
+		</property>
+
+		<property name="password" type="java.lang.String">
+		<column name="password" length="16">
+		</column>
+		</property>
+
+
+		<property name="headImg" type="java.lang.String">
+			<column name="headImg" >
+			</column>
+		</property>
+		<property name="gender" type="java.lang.Boolean">
+			<column name="gender">
+			</column>
+		</property>
+
+		<property name="state" type="java.lang.String">
+			<column name="state" >
+			</column>
+		</property>
+
+		<property name="phone" type="java.lang.String">
+			<column name="phone" length="16">
+			</column>
+		</property>
+
+		<property name="email" type="java.lang.String">
+			<column name="email" length="20">
+			</column>
+		</property>
+
+		<property name="birthday" type="java.util.Date">
+			<column name="birthday" length="10">
+			</column>
+		</property>
+
+		<property name="memo" type="java.lang.String">
+			<column name="memo" length="50">
+			</column>
+		</property>
+	</class>
+</hibernate-mapping>

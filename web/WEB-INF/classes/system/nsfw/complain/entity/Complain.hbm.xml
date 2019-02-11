@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="system.nsfw.complain.entity.Complain" table="ssh_0607_complain" schema="ssh2">
+        <id name="compId" column="comp_id">
+            <generator class="uuid.hex"></generator>
+        </id>
+        <property name="compName" column="comp_name"/>
+        <property name="compCompany" column="comp_company"/>
+        <property name="compMobile" column="comp_mobile"/>
+        <property name="isNm" column="is_nm"/>
+        <property name="compTime" column="comp_time"/>
+        <property name="compTitle" column="comp_title"/>
+        <property name="toCompName" column="to_comp_name"/>
+        <property name="toCompDept" column="to_comp_dept"/>
+        <property name="compContent" column="comp_content"/>
+        <property name="state" column="state"/>
+        <set name="complainReplys" inverse="true" cascade="all" lazy="false" order-by="reply_time">
+            <key>
+                <column name="comp_id"/>
+            </key>
+            <one-to-many not-found="ignore" class="system.nsfw.complain.entity.ComplainReply"/>
+        </set>
+    </class>
+</hibernate-mapping>
